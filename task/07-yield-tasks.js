@@ -8,7 +8,6 @@
  *                                                                                          *
  ********************************************************************************************/
 
-
 /**
  * Returns the lines sequence of "99 Bottles of Beer" song:
  *
@@ -33,9 +32,23 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+  for (let i = 99; i > 2; i--) {
+    yield `${i} bottles of beer on the wall, ${i} bottles of beer.`;
+    yield `Take one down and pass it around, ${i -
+      1} bottles of beer on the wall.`;
+  }
+  let lasts = [
+    '2 bottles of beer on the wall, 2 bottles of beer.',
+    'Take one down and pass it around, 1 bottle of beer on the wall.',
+    '1 bottle of beer on the wall, 1 bottle of beer.',
+    'Take one down and pass it around, no more bottles of beer on the wall.',
+    'No more bottles of beer on the wall, no more bottles of beer.',
+    'Go to the store and buy some more, 99 bottles of beer on the wall.'
+  ];
+  for (let i = 0; i < lasts.length; i++) {
+    yield lasts[i];
+  }
 }
-
 
 /**
  * Returns the Fibonacci sequence:
@@ -47,9 +60,14 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+  let arr = [0, 1];
+  yield 0;
+  yield 1;
+  while (true) {
+    arr.push(arr[arr.length - 1] + arr[arr.length - 2]);
+    yield arr[arr.length - 1];
+  }
 }
-
 
 /**
  * Traverses a tree using the depth-first strategy
@@ -82,9 +100,8 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    throw new Error('Not implemented');
+  throw new Error('Not implemented');
 }
-
 
 /**
  * Traverses a tree using the breadth-first strategy
@@ -108,9 +125,8 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
-    throw new Error('Not implemented');
+  throw new Error('Not implemented');
 }
-
 
 /**
  * Merges two yield-style sorted sequences into the one sorted sequence.
@@ -126,14 +142,13 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
-    throw new Error('Not implemented');
+  throw new Error('Not implemented');
 }
 
-
 module.exports = {
-    get99BottlesOfBeer: get99BottlesOfBeer,
-    getFibonacciSequence: getFibonacciSequence,
-    depthTraversalTree: depthTraversalTree,
-    breadthTraversalTree: breadthTraversalTree,
-    mergeSortedSequences: mergeSortedSequences
+  get99BottlesOfBeer: get99BottlesOfBeer,
+  getFibonacciSequence: getFibonacciSequence,
+  depthTraversalTree: depthTraversalTree,
+  breadthTraversalTree: breadthTraversalTree,
+  mergeSortedSequences: mergeSortedSequences
 };
