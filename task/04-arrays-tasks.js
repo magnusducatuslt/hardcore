@@ -278,7 +278,11 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-  throw new Error('Not implemented');
+  const arr2 = arr.reduce((arr, item, index) => {
+    const newAr = arr.concat(new Array((index += 1)).fill(item));
+    return newAr;
+  }, []);
+  return arr2;
 }
 
 /**
@@ -564,7 +568,16 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-  throw new Error('Not implemented');
+  return (mergedByProperty = array.reduce(
+    (result, obj) => ({
+      ...result,
+      [obj.id]: {
+        ...result[obj.id],
+        ...obj
+      }
+    }),
+    []
+  ));
 }
 
 /**
@@ -579,7 +592,10 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-  throw new Error('Not implemented');
+  return arr.reduce((arr2, elem) => {
+    const arr3 = arr2.concat(childrenSelector(elem));
+    return arr3;
+  }, []);
 }
 
 /**
